@@ -22,6 +22,9 @@
 		1A70E31A1B79EC1200C20AD1 /* Quint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A70E30E1B79EC1200C20AD1 /* Quint.swift */; };
 		1A70E31B1B79EC1200C20AD1 /* Sine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A70E30F1B79EC1200C20AD1 /* Sine.swift */; };
 		1A70E31C1B79EC1200C20AD1 /* SimpleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A70E3101B79EC1200C20AD1 /* SimpleTransition.swift */; };
+		1A97F4231BAACBA6003F6F65 /* SimpleTransitionOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A97F4221BAACBA6003F6F65 /* SimpleTransitionOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1A97F42A1BAACBA6003F6F65 /* SimpleTransitionOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A97F4201BAACBA6003F6F65 /* SimpleTransitionOSX.framework */; settings = {ASSET_TAGS = (); }; };
+		1A97F42F1BAACBA6003F6F65 /* SimpleTransitionOSXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A97F42E1BAACBA6003F6F65 /* SimpleTransitionOSXTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +34,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 1A70E2E91B79EBFC00C20AD1;
 			remoteInfo = SimpleTransition;
+		};
+		1A97F42B1BAACBA6003F6F65 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A70E2E11B79EBFC00C20AD1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A97F41F1BAACBA6003F6F65;
+			remoteInfo = "SimpleTransition-OSX";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -53,6 +63,12 @@
 		1A70E30E1B79EC1200C20AD1 /* Quint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quint.swift; sourceTree = "<group>"; };
 		1A70E30F1B79EC1200C20AD1 /* Sine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sine.swift; sourceTree = "<group>"; };
 		1A70E3101B79EC1200C20AD1 /* SimpleTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTransition.swift; sourceTree = "<group>"; };
+		1A97F4201BAACBA6003F6F65 /* SimpleTransitionOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleTransitionOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A97F4221BAACBA6003F6F65 /* SimpleTransitionOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleTransitionOSX.h; sourceTree = "<group>"; };
+		1A97F4241BAACBA6003F6F65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A97F4291BAACBA6003F6F65 /* SimpleTransition-OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SimpleTransition-OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A97F42E1BAACBA6003F6F65 /* SimpleTransitionOSXTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTransitionOSXTests.swift; sourceTree = "<group>"; };
+		1A97F4301BAACBA6003F6F65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +87,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1A97F41C1BAACBA6003F6F65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A97F4261BAACBA6003F6F65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A97F42A1BAACBA6003F6F65 /* SimpleTransitionOSX.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -79,6 +110,8 @@
 			children = (
 				1A70E2EC1B79EBFC00C20AD1 /* SimpleTransition */,
 				1A70E2F81B79EBFC00C20AD1 /* SimpleTransitionTests */,
+				1A97F4211BAACBA6003F6F65 /* SimpleTransitionOSX */,
+				1A97F42D1BAACBA6003F6F65 /* SimpleTransitionOSXTests */,
 				1A70E2EB1B79EBFC00C20AD1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +121,8 @@
 			children = (
 				1A70E2EA1B79EBFC00C20AD1 /* SimpleTransition.framework */,
 				1A70E2F41B79EBFC00C20AD1 /* SimpleTransitionTests.xctest */,
+				1A97F4201BAACBA6003F6F65 /* SimpleTransitionOSX.framework */,
+				1A97F4291BAACBA6003F6F65 /* SimpleTransition-OSXTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,6 +165,26 @@
 			path = Easing;
 			sourceTree = "<group>";
 		};
+		1A97F4211BAACBA6003F6F65 /* SimpleTransitionOSX */ = {
+			isa = PBXGroup;
+			children = (
+				1A97F4221BAACBA6003F6F65 /* SimpleTransitionOSX.h */,
+				1A97F4241BAACBA6003F6F65 /* Info.plist */,
+			);
+			name = SimpleTransitionOSX;
+			path = "SimpleTransition-OSX";
+			sourceTree = "<group>";
+		};
+		1A97F42D1BAACBA6003F6F65 /* SimpleTransitionOSXTests */ = {
+			isa = PBXGroup;
+			children = (
+				1A97F42E1BAACBA6003F6F65 /* SimpleTransitionOSXTests.swift */,
+				1A97F4301BAACBA6003F6F65 /* Info.plist */,
+			);
+			name = SimpleTransitionOSXTests;
+			path = "SimpleTransition-OSXTests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -138,6 +193,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A70E2EE1B79EBFC00C20AD1 /* SimpleTransition.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A97F41D1BAACBA6003F6F65 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A97F4231BAACBA6003F6F65 /* SimpleTransitionOSX.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +243,42 @@
 			productReference = 1A70E2F41B79EBFC00C20AD1 /* SimpleTransitionTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		1A97F41F1BAACBA6003F6F65 /* SimpleTransitionOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A97F4351BAACBA6003F6F65 /* Build configuration list for PBXNativeTarget "SimpleTransitionOSX" */;
+			buildPhases = (
+				1A97F41B1BAACBA6003F6F65 /* Sources */,
+				1A97F41C1BAACBA6003F6F65 /* Frameworks */,
+				1A97F41D1BAACBA6003F6F65 /* Headers */,
+				1A97F41E1BAACBA6003F6F65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimpleTransitionOSX;
+			productName = "SimpleTransition-OSX";
+			productReference = 1A97F4201BAACBA6003F6F65 /* SimpleTransitionOSX.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		1A97F4281BAACBA6003F6F65 /* SimpleTransition-OSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A97F4361BAACBA6003F6F65 /* Build configuration list for PBXNativeTarget "SimpleTransition-OSXTests" */;
+			buildPhases = (
+				1A97F4251BAACBA6003F6F65 /* Sources */,
+				1A97F4261BAACBA6003F6F65 /* Frameworks */,
+				1A97F4271BAACBA6003F6F65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1A97F42C1BAACBA6003F6F65 /* PBXTargetDependency */,
+			);
+			name = "SimpleTransition-OSXTests";
+			productName = "SimpleTransition-OSXTests";
+			productReference = 1A97F4291BAACBA6003F6F65 /* SimpleTransition-OSXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -194,6 +293,12 @@
 						CreatedOnToolsVersion = 7.0;
 					};
 					1A70E2F31B79EBFC00C20AD1 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					1A97F41F1BAACBA6003F6F65 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					1A97F4281BAACBA6003F6F65 = {
 						CreatedOnToolsVersion = 7.0;
 					};
 				};
@@ -212,6 +317,8 @@
 			targets = (
 				1A70E2E91B79EBFC00C20AD1 /* SimpleTransition */,
 				1A70E2F31B79EBFC00C20AD1 /* SimpleTransitionTests */,
+				1A97F41F1BAACBA6003F6F65 /* SimpleTransitionOSX */,
+				1A97F4281BAACBA6003F6F65 /* SimpleTransition-OSXTests */,
 			);
 		};
 /* End PBXProject section */
@@ -225,6 +332,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1A70E2F21B79EBFC00C20AD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A97F41E1BAACBA6003F6F65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A97F4271BAACBA6003F6F65 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -261,6 +382,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1A97F41B1BAACBA6003F6F65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A97F4251BAACBA6003F6F65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A97F42F1BAACBA6003F6F65 /* SimpleTransitionOSXTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -268,6 +404,11 @@
 			isa = PBXTargetDependency;
 			target = 1A70E2E91B79EBFC00C20AD1 /* SimpleTransition */;
 			targetProxy = 1A70E2F61B79EBFC00C20AD1 /* PBXContainerItemProxy */;
+		};
+		1A97F42C1BAACBA6003F6F65 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1A97F41F1BAACBA6003F6F65 /* SimpleTransitionOSX */;
+			targetProxy = 1A97F42B1BAACBA6003F6F65 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -418,6 +559,72 @@
 			};
 			name = Release;
 		};
+		1A97F4311BAACBA6003F6F65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "SimpleTransition-OSX/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "Animate-Identify.SimpleTransitionOSX";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		1A97F4321BAACBA6003F6F65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "SimpleTransition-OSX/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "Animate-Identify.SimpleTransitionOSX";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		1A97F4331BAACBA6003F6F65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "SimpleTransition-OSXTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "Animate-Identify.SimpleTransition-OSXTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		1A97F4341BAACBA6003F6F65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "SimpleTransition-OSXTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "Animate-Identify.SimpleTransition-OSXTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -447,6 +654,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		1A97F4351BAACBA6003F6F65 /* Build configuration list for PBXNativeTarget "SimpleTransitionOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A97F4311BAACBA6003F6F65 /* Debug */,
+				1A97F4321BAACBA6003F6F65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1A97F4361BAACBA6003F6F65 /* Build configuration list for PBXNativeTarget "SimpleTransition-OSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A97F4331BAACBA6003F6F65 /* Debug */,
+				1A97F4341BAACBA6003F6F65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

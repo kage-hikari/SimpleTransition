@@ -1,6 +1,6 @@
 ## Simple Easing
 
-Xcode7 Swift2.0 iOS8.0~
+Xcode7 Swift2.0 iOS8.0~　OSX10.10~
 
 Reference resource:  
 [http://www.robertpenner.com/easing/](http://www.robertpenner.com/easing/)
