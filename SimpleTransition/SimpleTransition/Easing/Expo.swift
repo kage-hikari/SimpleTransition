@@ -43,10 +43,10 @@ public func easeOutExpo (t: Float, b: Float, c: Float, d: Float) -> Float {
 :param: d duration
 :returns: current value
 */
-public func easeInOutExpo (var t: Float, b: Float, c: Float, d: Float) -> Float {
+public func easeInOutExpo (t: Float, b: Float, c: Float, d: Float) -> Float {
 	if t == 0 { return b }
 	if t == d { return b + c }
-	t = t / d * 2
+	var t: Float = t / d * 2
 	if t < 1 {
 		return c / 2 * pow(2, 10 * (t - 1)) + b - c * 0.0005
 	} else {
@@ -64,8 +64,8 @@ public func easeInOutExpo (var t: Float, b: Float, c: Float, d: Float) -> Float 
 */
 public func easeOutInExpo (t: Float, b: Float, c: Float, d: Float) -> Float {
 	if t < d / 2 {
-		return easeOutExpo(t * 2, b: b, c: c / 2, d: d)
+		return easeOutExpo(t: t * 2, b: b, c: c / 2, d: d)
 	} else {
-		return easeInExpo((t * 2) - d, b: b + c / 2, c: c / 2, d: d)
+		return easeInExpo(t: (t * 2) - d, b: b + c / 2, c: c / 2, d: d)
 	}
 }

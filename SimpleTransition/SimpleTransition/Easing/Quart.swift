@@ -13,7 +13,8 @@ import Foundation
 :param: d duration
 :returns: current value
 */
-public func easeInQuart (var t: Float, b: Float, c: Float, d: Float) -> Float {
+public func easeInQuart (t: Float, b: Float, c: Float, d: Float) -> Float {
+	var t = t
 	t = t / d
 	return c * pow(t, 4) + b
 }
@@ -25,7 +26,8 @@ public func easeInQuart (var t: Float, b: Float, c: Float, d: Float) -> Float {
 :param: d duration
 :returns: current value
 */
-public func easeOutQuart (var t: Float, b: Float, c: Float, d: Float) -> Float {
+public func easeOutQuart (t: Float, b: Float, c: Float, d: Float) -> Float {
+	var t = t
 	t = t / d - 1
 	return -c * (pow(t, 4) - 1) + b
 }
@@ -37,7 +39,8 @@ public func easeOutQuart (var t: Float, b: Float, c: Float, d: Float) -> Float {
 :param: d duration
 :returns: current value
 */
-public func easeInOutQuart (var t: Float, b: Float, c: Float, d: Float) -> Float {
+public func easeInOutQuart (t: Float, b: Float, c: Float, d: Float) -> Float {
+	var t = t
 	t = t / d * 2
 	if t < 1 {
 		return c / 2 * pow(t, 4) + b
@@ -56,8 +59,8 @@ public func easeInOutQuart (var t: Float, b: Float, c: Float, d: Float) -> Float
 */
 public func easeOutInQuart (t: Float, b: Float, c: Float, d: Float) -> Float {
 	if t < d / 2 {
-		return easeOutQuart(t * 2, b: b, c: c / 2, d: d)
+		return easeOutQuart(t: t * 2, b: b, c: c / 2, d: d)
 	} else {
-		return easeInQuart((t * 2) - d, b: b + c / 2, c: c / 2, d: d)
+		return easeInQuart(t: (t * 2) - d, b: b + c / 2, c: c / 2, d: d)
 	}
 }

@@ -5,6 +5,19 @@
 //  http://www.robertpenner.com/easing_terms_of_use.html
 
 import Foundation
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
 
 /**
 :param: t current time
@@ -13,7 +26,8 @@ import Foundation
 :param: d duration
 :returns: current value
 */
-public func easeInElastic (var t: Float, b: Float, c: Float, d: Float) -> Float {
+public func easeInElastic (t: Float, b: Float, c: Float, d: Float) -> Float {
+	var t = t
 	var a: Float? = nil
 	var p: Float? = nil
 	if t == 0 { return b }
@@ -38,7 +52,8 @@ public func easeInElastic (var t: Float, b: Float, c: Float, d: Float) -> Float 
 :param: d duration
 :returns: current value
 */
-public func easeOutElastic (var t: Float, b: Float, c: Float, d: Float) -> Float {
+public func easeOutElastic (t: Float, b: Float, c: Float, d: Float) -> Float {
+	var t = t
 	var a: Float? = nil
 	var p: Float? = nil
 	if t == 0 { return b }
@@ -62,7 +77,8 @@ public func easeOutElastic (var t: Float, b: Float, c: Float, d: Float) -> Float
 :param: d duration
 :returns: current value
 */
-public func easeInOutElastic (var t: Float, b: Float, c: Float, d: Float) -> Float {
+public func easeInOutElastic (t: Float, b: Float, c: Float, d: Float) -> Float {
+	var t = t
 	var a: Float? = nil
 	var p: Float? = nil
 	if t == 0 { return b }

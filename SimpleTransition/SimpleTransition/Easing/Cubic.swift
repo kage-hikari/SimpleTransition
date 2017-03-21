@@ -13,8 +13,8 @@ import Foundation
 :param: d duration
 :returns: current value
 */
-public func easeInCubic (var t: Float, b: Float, c: Float, d: Float) -> Float {
-	t = t / d
+public func easeInCubic (t: Float, b: Float, c: Float, d: Float) -> Float {
+	let t: Float = t / d
 	return c * pow(t, 3) + b
 }
 
@@ -25,8 +25,8 @@ public func easeInCubic (var t: Float, b: Float, c: Float, d: Float) -> Float {
 :param: d duration
 :returns: current value
 */
-public func easeOutCubic (var t: Float, b: Float, c: Float, d: Float) -> Float {
-	t = t / d - 1
+public func easeOutCubic (t: Float, b: Float, c: Float, d: Float) -> Float {
+	let t: Float = t / d - 1
 	return c * (pow(t, 3) + 1) + b
 }
 
@@ -37,8 +37,8 @@ public func easeOutCubic (var t: Float, b: Float, c: Float, d: Float) -> Float {
 :param: d duration
 :returns: current value
 */
-public func easeInOutCubic (var t: Float, b: Float, c: Float, d: Float) -> Float {
-	t = t / d * 2
+public func easeInOutCubic (t: Float, b: Float, c: Float, d: Float) -> Float {
+	var t: Float = t / d * 2
 	if t < 1 {
 		return c / 2 * t * t * t + b
 	} else {
@@ -56,8 +56,8 @@ public func easeInOutCubic (var t: Float, b: Float, c: Float, d: Float) -> Float
 */
 public func easeOutInCubic (t: Float, b: Float, c: Float, d: Float) -> Float {
 	if t < d / 2 {
-		return easeOutCubic(t * 2, b: b, c: c / 2, d: d)
+		return easeOutCubic(t: t * 2, b: b, c: c / 2, d: d)
 	} else {
-		return easeInCubic((t * 2) - d, b: b + c / 2, c: c / 2, d: d)
+		return easeInCubic(t: (t * 2) - d, b: b + c / 2, c: c / 2, d: d)
 	}
 }

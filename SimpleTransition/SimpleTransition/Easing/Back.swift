@@ -13,7 +13,8 @@ import Foundation
 :param: d duration
 :returns: current value
 */
-public func easeInBack (var t: Float, b: Float, c: Float, d: Float) -> Float {
+public func easeInBack (t: Float, b: Float, c: Float, d: Float) -> Float {
+	var t = t
 	var s: Float? = nil
 	if s == nil { s = 1.70158 }
 	t = t / d
@@ -27,7 +28,8 @@ public func easeInBack (var t: Float, b: Float, c: Float, d: Float) -> Float {
 :param: d duration
 :returns: current value
 */
-public func easeOutBack (var t: Float, b: Float, c: Float, d: Float) -> Float {
+public func easeOutBack (t: Float, b: Float, c: Float, d: Float) -> Float {
+	var t = t
 	var s: Float? = nil
 	if s == nil { s = 1.70158 }
 	t = t / d - 1
@@ -41,7 +43,8 @@ public func easeOutBack (var t: Float, b: Float, c: Float, d: Float) -> Float {
 :param: d duration
 :returns: current value
 */
-public func easeInOutBack (var t: Float, b: Float, c: Float, d: Float) -> Float {
+public func easeInOutBack (t: Float, b: Float, c: Float, d: Float) -> Float {
+	var t = t
 	var s: Float? = nil
 	if s == nil { s = 1.70158 }
 	s = s! * 1.525

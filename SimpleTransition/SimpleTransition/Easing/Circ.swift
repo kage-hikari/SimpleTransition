@@ -13,7 +13,8 @@ import Foundation
 :param: d duration
 :returns: current value
 */
-public func easeInCirc (var t: Float, b: Float, c: Float, d: Float) -> Float {
+public func easeInCirc (t: Float, b: Float, c: Float, d: Float) -> Float {
+	var t = t
 	t = t / d
 	return (-c * (sqrt( 1 - pow(t, 2)) - 1) + b)
 }
@@ -25,7 +26,8 @@ public func easeInCirc (var t: Float, b: Float, c: Float, d: Float) -> Float {
 :param: d duration
 :returns: current value
 */
-public func easeOutCirc (var t: Float, b: Float, c: Float, d: Float) -> Float {
+public func easeOutCirc (t: Float, b: Float, c: Float, d: Float) -> Float {
+	var t = t
 	t = t / d - 1
 	return (c * sqrt(1 - pow(t, 2)) + b)
 }
@@ -37,7 +39,8 @@ public func easeOutCirc (var t: Float, b: Float, c: Float, d: Float) -> Float {
 :param: d duration
 :returns: current value
 */
-public func easeInOutCirc (var t: Float, b: Float, c: Float, d: Float) -> Float {
+public func easeInOutCirc (t: Float, b: Float, c: Float, d: Float) -> Float {
+	var t = t
 	t = t / d * 2
 	if t < 1 {
 		return -c / 2 * (sqrt( 1 - t * t) - 1) + b
@@ -56,8 +59,8 @@ public func easeInOutCirc (var t: Float, b: Float, c: Float, d: Float) -> Float 
 */
 public func easeOutInCirc (t: Float, b: Float, c: Float, d: Float) -> Float {
 	if t < d / 2 {
-		return easeOutCirc(t * 2, b: b, c: c / 2, d: d)
+		return easeOutCirc(t: t * 2, b: b, c: c / 2, d: d)
 	} else {
-		return easeInCirc(( t * 2 ) - d, b: b + c / 2, c: c / 2, d: d)
+		return easeInCirc(t: ( t * 2 ) - d, b: b + c / 2, c: c / 2, d: d)
 	}
 }

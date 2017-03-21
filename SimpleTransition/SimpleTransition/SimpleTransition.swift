@@ -15,18 +15,19 @@
 import Foundation
 
 // MARK: - Transition
-public class Transition: NSObject {
+open class Transition: NSObject {
 
-	private let _easeFunc: (t: Float, b: Float, c: Float, d: Float) -> Float
-	private let _updateFunc: (value: Float) -> Void
-	private let _completeFunc: ((value: Float) -> Void)?
+	fileprivate let _easeFunc: (_ t: Float, _ b: Float, _ c: Float, _ d: Float) -> Float
+	fileprivate let _updateFunc: (_ value: Float) -> Void
+	fileprivate let _completeFunc: ((_ value: Float) -> Void)?
 
-	var _et: Double = 0
-	var _currentT: Float = 0
-	let _d: Float
-	let _b: Float
-	let _c: Float
-	var _timer: NSTimer?
+	fileprivate var _et: Double = 0
+	fileprivate var _currentT: Float = 0
+	fileprivate let _d: Float
+	fileprivate let _b: Float
+	fileprivate let _c: Float
+	fileprivate var _delayTimer: Timer?
+	fileprivate var _timer: Timer?
 
 	/**
 	initialize Tween
@@ -37,7 +38,7 @@ public class Transition: NSObject {
 	:param: easeFunc
 	:param: updateFunc
 	*/
-	init(time: Float, before: Float, after: Float, easeFunc: (t: Float, b: Float, c: Float, d: Float) -> Float,  updateFunc: (value: Float) -> Void, completeFunc: ((value: Float) -> Void)? = nil) {
+	public init(time: Float, before: Float, after: Float, easeFunc: @escaping (_ t: Float, _ b: Float, _ c: Float, _ d: Float) -> Float,  updateFunc: @escaping (_ value: Float) -> Void, completeFunc: ((_ value: Float) -> Void)? = nil) {
 
 		self._easeFunc = easeFunc
 		self._updateFunc = updateFunc
@@ -61,29 +62,38 @@ public class Transition: NSObject {
 	/**
 	transition start or resume
 	*/
-	public func start() {
+	open func start(_ delay: Float = 0.0) {
 		self.stop()
-		self._et = NSDate().timeIntervalSince1970 + Double(self._d - self._currentT)
-		self._timer = NSTimer.scheduledTimerWithTimeInterval(0.016, target: self, selector: "onUpdate:", userInfo: nil, repeats: true)
+		self._delayTimer = Timer.scheduledTimer(timeInterval: TimeInterval(delay), target: self, selector: #selector(Transition.onCompleteDelay(_:)), userInfo: nil, repeats: false)
 	}
 
 	/**
+
+	*/
+	func onCompleteDelay( _ timer: Timer ){
+		self._et = Date().timeIntervalSince1970 + Double(self._d - self._currentT)
+		self._timer = Timer.scheduledTimer(timeInterval: 0.016, target: self, selector: #selector(Transition.onUpdate(_:)), userInfo: nil, repeats: true)
+	}
+	
+	/**
 	transition stop
 	*/
-	public func stop() {
-		if self._timer != nil {
-			if self._timer?.valid == true {
-				self._timer?.invalidate()
-				self._timer = nil
-			}
+	open func stop() {
+		if self._timer?.isValid == true {
+			self._timer?.invalidate()
+			self._timer = nil
+		}
+		if self._delayTimer?.isValid == true {
+			self._delayTimer?.invalidate()
+			self._delayTimer = nil
 		}
 	}
 
 	/**
 	timer updateHandler
 	*/
-	func onUpdate( timer: NSTimer ){
-		let ct: Double = NSDate().timeIntervalSince1970
+	open func onUpdate( _ timer: Timer ){
+		let ct: Double = Date().timeIntervalSince1970
 		var t: Float = self._d - Float(self._et - ct)
 		var isCompleted: Bool = false
 		if t >= self._d {
@@ -93,10 +103,10 @@ public class Transition: NSObject {
 		}
 
 		self._currentT = t
-		let value: Float = self._easeFunc(t: t, b: self._b, c: self._c, d: self._d)
-		self._updateFunc(value: value)
+		let value: Float = self._easeFunc(t, self._b, self._c, self._d)
+		self._updateFunc(value)
 		if isCompleted == true && self._completeFunc != nil {
-			self._completeFunc!(value: value)
+			self._completeFunc!(value)
 		}
 	}
 	
@@ -153,21 +163,21 @@ create TransitionObject
 :param: time( sec )
 :param: before value
 :param: after value
-:param: easiong function
+:param: easing function
 :param: update function(closure)
 :param: complete function(closure)
 :returns: Transition instance
 */
 public func create (
-		time time: Float,
+		time: Float,
 		before: Float,
 		after: Float,
-		easiong: Easing,
-		update: (value: Float) -> Void,
-		complete: (value: Float) -> Void
+		easing: Easing,
+		update: @escaping (_ value: Float) -> Void,
+		complete: @escaping (_ value: Float) -> Void
 	) -> Transition {
 		
-	let easingFunc: (t: Float, b: Float, c: Float, d: Float) -> Float = _getEasingFunc(easiong)
+	let easingFunc: (_ t: Float, _ b: Float, _ c: Float, _ d: Float) -> Float = _getEasingFunc(easing)
 	return Transition(time: time, before: before, after: after,  easeFunc: easingFunc, updateFunc: update, completeFunc: complete)
 }
 
@@ -182,14 +192,14 @@ create TransitionObject
 :returns: Transition instance
 */
 public func create (
-		time time: Float,
+		time: Float,
 		before: Float,
 		after: Float,
-		update: (value: Float) -> Void,
-		complete: (value: Float) -> Void
+		update: @escaping (_ value: Float) -> Void,
+		complete: @escaping (_ value: Float) -> Void
 	) -> Transition {
 		
-	let easingFunc: (t: Float, b: Float, c: Float, d: Float) -> Float = _getEasingFunc(.easeLinear)
+	let easingFunc: (_ t: Float, _ b: Float, _ c: Float, _ d: Float) -> Float = _getEasingFunc(.easeLinear)
 	return Transition(time: time, before: before, after: after, easeFunc: easingFunc, updateFunc: update, completeFunc: complete)
 }
 
@@ -199,19 +209,19 @@ create TransitionObject
 :param: time( sec )
 :param: before value
 :param: after value
-:param: easiong function
+:param: easing function
 :param: update function(closure)
 :returns: Transition instance
 */
 public func create (
-		time time: Float,
+		time: Float,
 		before: Float,
 		after: Float,
-		easiong: Easing,
-		update: (value: Float) -> Void
+		easing: Easing,
+		update: @escaping (_ value: Float) -> Void
 	) -> Transition {
 		
-	let easingFunc: (t: Float, b: Float, c: Float, d: Float) -> Float = _getEasingFunc(easiong)
+	let easingFunc: (_ t: Float, _ b: Float, _ c: Float, _ d: Float) -> Float = _getEasingFunc(easing)
 	return Transition(time: time, before: before, after: after, easeFunc: easingFunc, updateFunc: update)
 }
 
@@ -225,13 +235,13 @@ create TransitionObject
 :returns: Transition instance
 */
 public func create (
-		time time: Float,
+		time: Float,
 		before: Float,
 		after: Float,
-		update: (value: Float) -> Void
+		update: @escaping (_ value: Float) -> Void
 	) -> Transition {
 		
-	let easingFunc: (t: Float, b: Float, c: Float, d: Float) -> Float = _getEasingFunc(.easeLinear)
+	let easingFunc: (_ t: Float, _ b: Float, _ c: Float, _ d: Float) -> Float = _getEasingFunc(.easeLinear)
 	return Transition(time: time, before: before, after: after, easeFunc: easingFunc, updateFunc: update)
 }
 
@@ -240,9 +250,9 @@ public func create (
 :param: easing
 :returns: easeingFunc
 */
-private func _getEasingFunc(easiong: Easing) -> (t: Float, b: Float, c: Float, d: Float) -> Float {
-	var easingFunc: ((t: Float, b: Float, c: Float, d: Float) -> Float)?
-	switch(easiong) {
+private func _getEasingFunc(_ easing: Easing) -> (_ t: Float, _ b: Float, _ c: Float, _ d: Float) -> Float {
+	var easingFunc: ((_ t: Float, _ b: Float, _ c: Float, _ d: Float) -> Float)?
+	switch(easing) {
 		case Easing.easeLinear: easingFunc = easeLinear
 		case Easing.easeInQuad: easingFunc = easeInQuad
 		case Easing.easeOutQuad: easingFunc = easeOutQuad
@@ -285,3 +295,4 @@ private func _getEasingFunc(easiong: Easing) -> (t: Float, b: Float, c: Float, d
 	}
 	return easingFunc!
 }
+

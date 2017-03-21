@@ -13,8 +13,8 @@ import Foundation
 :param: d duration
 :returns: current value
 */
-public func easeInQuad (var t: Float, b: Float, c: Float, d: Float) -> Float {
-	t = t / d
+public func easeInQuad (t: Float, b: Float, c: Float, d: Float) -> Float {
+	let t: Float = t / d
 	return c * pow(t, 2) + b
 }
 
@@ -25,8 +25,8 @@ public func easeInQuad (var t: Float, b: Float, c: Float, d: Float) -> Float {
 :param: d duration
 :returns: current value
 */
-public func easeOutQuad (var t: Float, b: Float, c: Float, d: Float) -> Float {
-	t = t / d
+public func easeOutQuad (t: Float, b: Float, c: Float, d: Float) -> Float {
+	let t: Float = t / d
 	return -c * t * (t - 2) + b
 }
 
@@ -37,8 +37,8 @@ public func easeOutQuad (var t: Float, b: Float, c: Float, d: Float) -> Float {
 :param: d duration
 :returns: current value
 */
-public func easeInOutQuad (var t: Float, b: Float, c: Float, d: Float) -> Float {
-	t = t / d * 2
+public func easeInOutQuad (t: Float, b: Float, c: Float, d: Float) -> Float {
+	let t: Float = t / d * 2
 	if t < 1 {
 		return c / 2 * pow(t, 2) + b
 	}
@@ -52,9 +52,9 @@ public func easeInOutQuad (var t: Float, b: Float, c: Float, d: Float) -> Float 
 :param: d duration
 :returns: current value
 */
-public func easeOutInQuad ( t: Float, b: Float, c: Float, d: Float) -> Float {
+public func easeOutInQuad (t: Float, b: Float, c: Float, d: Float) -> Float {
 	if t < d / 2 {
-		return easeOutQuad(t * 2, b: b, c: c / 2, d: d)
+		return easeOutQuad(t: t * 2, b: b, c: c / 2, d: d)
 	}
-	return easeInQuad((t * 2) - d, b: b + c / 2, c: c / 2, d: d)
+	return easeInQuad(t: (t * 2) - d, b: b + c / 2, c: c / 2, d: d)
 }

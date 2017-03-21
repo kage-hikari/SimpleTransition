@@ -3,7 +3,7 @@
 import UIKit
 import SimpleTransition
 import XCPlayground
-
+import PlaygroundSupport
 
 ////////////////////////////////////////////////////////////////////////
 // simple
@@ -13,16 +13,16 @@ SimpleTransition.create(time: 1, before: a, after: 100, update: { (value) -> Voi
 	print(a)
 }) { (value) -> Void in
 	print(value)
-}.start()
+}.start(5)
 
 var b: Float = 0
-SimpleTransition.create( time: 1, before: b, after: 100, easiong: .easeInOutElastic ) { ( value: Float ) -> Void in
+SimpleTransition.create(time: 1, before: b, after: 100, easing: .easeInOutElastic ) { ( value: Float ) -> Void in
 	b = value
 	print(b)
 }.start()
 
 var c: Float = 0
-SimpleTransition.create( time: 1, before: b, after: 100, easiong: .easeInOutBack ) { ( value: Float ) -> Void in
+SimpleTransition.create(time: 1, before: b, after: 100, easing: .easeInOutBack ) { ( value: Float ) -> Void in
 	c = value
 	print(c)
 }.start()
@@ -43,31 +43,32 @@ item03.backgroundColor = UIColor(white: 0.1, alpha: 1.0)
 view.addSubview(item03)
 
 
-SimpleTransition.create( time: 3, before: Float( item01.frame.origin.x ), after: 150, easiong: .easeOutElastic ) { ( value: Float ) -> Void in
+SimpleTransition.create( time: 3, before: Float( item01.frame.origin.x ), after: 150, easing: .easeOutElastic ) { ( value: Float ) -> Void in
 	item01.frame.origin.x = CGFloat( value )
 }.start()
-SimpleTransition.create( time: 3, before: Float( item02.frame.origin.x ), after: 150, easiong: .easeOutBack ) { ( value: Float ) -> Void in
+SimpleTransition.create( time: 3, before: Float( item02.frame.origin.x ), after: 150, easing: .easeOutBack ) { ( value: Float ) -> Void in
 	item02.frame.origin.x = CGFloat( value )
 }.start()
-SimpleTransition.create( time: 3, before: Float( item03.frame.origin.x ), after: 150, easiong: .easeInOutElastic ) { ( value: Float ) -> Void in
+SimpleTransition.create( time: 3, before: Float( item03.frame.origin.x ), after: 150, easing: .easeInOutElastic ) { ( value: Float ) -> Void in
 	item03.frame.origin.x = CGFloat( value )
 }.start()
 
 
 let label01: UILabel = UILabel(frame: CGRect(x: 50, y: 110, width: 200, height: 20))
-label01.textAlignment = NSTextAlignment.Center
+label01.textAlignment = NSTextAlignment.center
 view.addSubview( label01 )
 SimpleTransition.create( time: 3, before: 0, after: 1000 ) { ( value: Float ) -> Void in
 	label01.text = String( Int( value ) )
 }.start()
 
 let label02: UILabel = UILabel(frame: CGRect(x: 50, y: 140, width: 200, height: 20))
-label02.textAlignment = NSTextAlignment.Center
+label02.textAlignment = NSTextAlignment.center
 view.addSubview( label02 )
-SimpleTransition.create( time: 3, before: 65, after: 90, easiong: .easeInOutElastic ) { ( value: Float ) -> Void in
-	label02.text = String( Character(UnicodeScalar(Int(value))))
+SimpleTransition.create( time: 3, before: 65, after: 90, easing: .easeInOutElastic ) { ( value: Float ) -> Void in
+	label02.text = String( Character(UnicodeScalar(Int(value))!))
 }.start()
-SimpleTransition.easeOutInSine(10, b: 0, c: 100, d: 100)
+SimpleTransition.easeOutInSine(t: 10, b: 0, c: 100, d: 100)
 
-XCPShowView("view", view: view)
-XCPSetExecutionShouldContinueIndefinitely()
+
+XCPlaygroundPage.currentPage.liveView = view
+XCPlaygroundPage.currentPage.needsIndefiniteExecution = true

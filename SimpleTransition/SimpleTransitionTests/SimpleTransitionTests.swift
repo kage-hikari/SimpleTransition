@@ -22,12 +22,12 @@ class SimpleTransitionTests: XCTestCase {
     }
     
     func testEaseLinear() {
-		XCTAssertEqual(10, SimpleTransition.easeLinear(10, b: 0, c: 100, d: 100))
+		XCTAssertEqual(10, SimpleTransition.easeLinear(t: 10, b: 0, c: 100, d: 100))
     }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

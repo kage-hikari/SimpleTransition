@@ -48,8 +48,8 @@ public func easeInOutSine (t: Float, b: Float, c: Float, d: Float) -> Float {
 */
 public func easeOutInSine (t: Float, b: Float, c: Float, d: Float) -> Float {
 	if t < d / 2 {
-		return easeOutSine(t * 2, b: b, c: c / 2, d: d)
+		return easeOutSine(t: t * 2, b: b, c: c / 2, d: d)
 	} else {
-		return easeInSine((t * 2) - d, b: b + c / 2, c: c / 2, d: d)
+		return easeInSine(t: (t * 2) - d, b: b + c / 2, c: c / 2, d: d)
 	}
 }
